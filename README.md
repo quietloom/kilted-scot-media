@@ -27,11 +27,20 @@ the copy here has done its job.
 ## Lifecycle
 
 1. Drop the finished video in, commit, push.
-2. Wait for Pages to deploy, then confirm the URL returns `200` with a `video/*`
-   content type before handing it to any publishing tool.
+2. **Wait, then verify.** A push is not a live URL. Measured on this repo's first deploy:
+   two 404s before the file appeared, live at roughly 40–60 seconds. Confirm
+   `200` with a `video/*` content type before handing the URL to any publishing tool —
+   handing over a URL that is still 404ing wastes a container.
 3. Publish. Instagram now holds its own copy.
-4. Delete the file whenever convenient — the URL is dead the moment the post exists.
+4. Delete the file whenever convenient.
 5. When the repo gets unwieldy, delete the whole thing and recreate it.
+
+**Removal is not immediate, and must not be treated as a privacy control.** Measured
+07/09/2026: a file deleted and pushed still returned `200` for at least 2.5 minutes
+afterwards — GitHub Pages serves through a CDN with its own cache lifetime. That is
+harmless for this repo's purpose, but it means deleting a file does not promptly make it
+unreachable. Anything that must not be public must not be pushed here in the first
+place.
 
 ## Licensing — read before adding anything
 
