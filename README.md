@@ -24,6 +24,11 @@ the copy here has done its job.
 - **Not permanent.** When this repo grows, it gets **deleted and recreated**. That is the
   intended lifecycle, not a failure. Every URL it has ever served is expected to break.
 
+## Size rules (13/11/2026)
+
+- **GitHub rejects any file over 100 MB** (`GH001`, pre-receive). Hosted masters are capped at **90 MB**; check `stat -c %s <file>` before `git add`. A larger file goes back to its series for a higher-crf re-encode (Townhill: 105 MB → 61.8 MB at crf 21).
+- **Push one video per commit.** About 110 MiB in one commit made Pages builds fail twice (Pittenweem), with no error message.
+
 ## Lifecycle
 
 1. Drop the finished video in, commit, push.
